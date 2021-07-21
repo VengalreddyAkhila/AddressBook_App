@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name = "viewport" content="width=device-width, intial-scale=1.0">  
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/addressbook.css" type="text/css"> 
+        <script  defer src="..\Js\addressbook.js"></script>
+        <title>Address Book</title>       
+        </head>
+        <body>
+            <header class="header-content header">
+                <div class="logo-content">
+                    <img src="..\Assests\book.jpg" alt="" width=100px height="100px">
+                    <div>
+                        <span class="book-text">ADDRESS</span><br>
+                        <span class="book-text address-book">BOOK</span>
+                    </div>
+                </div>
+            </header> 
+            <div class ="form-content">
+                <form class="form" action="#" onsubmit="save">
+                <div class="form-head">PERSON ADDRESS BOOK FORM</div>
+                <div class="row-content">
+                    <label class="label text" for="name">FullName</label>
+                    <input class="input" type="text" id="name" name="name" placeholder="YOUR NAME" required>
+                    <error-output class="text-error" for="text"></error-output>
+               </div>
+            </div>
+            </form>
+        </body>
