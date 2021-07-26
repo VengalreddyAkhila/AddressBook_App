@@ -5,7 +5,7 @@
         <meta name = "viewport" content="width=device-width, intial-scale=1.0">  
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../css/addressbook.css" type="text/css"> 
-        <script  defer src="..\Js\addressbook.js"></script>
+        <!-- <script  src="..\Js\addressbook.js" defer></script> -->
         <title>Address Book</title>       
         </head>
         <body>
@@ -22,10 +22,72 @@
                 <form class="form" action="#" onsubmit="save">
                 <div class="form-head">PERSON ADDRESS BOOK FORM</div>
                 <div class="row-content">
-                    <label class="label text" for="name">FullName</label>
-                    <input class="input" type="text" id="name" name="name" placeholder="YOUR NAME" required>
+                    <label class="name text" for="name"></label>
+                    <input class="input" type="text" id="name" name="name" placeholder="FULL NAME" required>
                     <error-output class="text-error" for="text"></error-output>
-               </div>
+                </div>
+               <div class="row-content">
+                <label class="address text" for="name"></label>
+                <input class="input text" type="text" id="name" name="name" placeholder="Address" required>                
+           </div>     
+           <script>
+               var citiesByState = {
+                            AP: ["Kurnool","Kadapa","Thirupathi"],
+                            Telangana:["Hyderabad","Warangal","Karimanagar","Nalgonda"],
+                            Karnataka:["Benagalore","Hubli","Ballari"],
+                              Odisha: ["Bhubaneswar","Puri","Cuttack"],
+                            Maharashtra: ["Mumbai","Pune","Nagpur"],
+                             Kerala: ["kochi","Kanpur"]
+                       }
+                function makeSubmenu(value) {
+                            if(value.length==0) document.getElementById("citySelect").innerHTML = "<option></option>";
+                                else {
+                           var citiesOptions = "";
+                           for(cityId in citiesByState[value]) {
+                          citiesOptions+="<option>"+citiesByState[value][cityId]+"</option>";
+                        }
+                         document.getElementById("citySelect").innerHTML = citiesOptions;
+                         }
+                        }
+                function displaySelected() { var country = document.getElementById("countrySelect").value;
+                         var city = document.getElementById("citySelect").value;
+                          alert(country+"\n"+city);
+                        }
+                function resetSelection() {
+                document.getElementById("countrySelect").selectedIndex = 0;
+                document.getElementById("citySelect").selectedIndex = 0;
+                 } 
+           </script>
+            
+           <body onload="resetSelection()">
+            <select id="countrySelect" size="1" onchange="makeSubmenu(this.value)">
+            <option value="" disabled selected>Choose State</option>
+            <option>AP</option>
+            <option>Karnataka</option>
+            <option>Telangana</option>
+            <option>Odisha</option>
+            <option>Maharashtra</option>
+            <option>Kerala</option>
+            </select>
+            <select id="citySelect" size="1" >
+            <option value="" disabled selected>Choose City</option>
+            <option></option>
+            </select>
+            <div class="row-content">
+                <label class="address text" for="name"></label>
+                <input class="input text" type="text" id="name" name="name" placeholder="Zip code" required>                
+           </div>     
+            <div class="row-content">
+                <label class="address text" for="name"></label>
+                <input class="input text" type="text" id="name" name="name" placeholder="Phone Number" required>                
+           </div>  
+            <div class="submit-reset">
+                <button type="submit" class="button submitbutton" id="submitbutton" onclick="fun()">Add</button>
+                <button type="reset" class="resetbutton" id="reset"  >Reset</button>
             </div>
+
+        </div>
             </form>
+            
         </body>
+        </html>
